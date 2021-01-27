@@ -1,0 +1,6 @@
+{
+    "message": "Heyy its me",
+    "time": "12132317334",
+    "fromUser": "Joshh",
+    "toUser": "Albin"
+}
