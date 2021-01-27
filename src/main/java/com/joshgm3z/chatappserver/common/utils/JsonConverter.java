@@ -1,6 +1,6 @@
 package com.joshgm3z.chatappserver.common.utils;
 
-import com.joshgm3z.chatappserver.ChatDTO;
+import com.joshgm3z.chatappserver.common.data.ChatDTO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

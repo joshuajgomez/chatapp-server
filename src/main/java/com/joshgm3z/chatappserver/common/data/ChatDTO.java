@@ -1,4 +1,4 @@
-package com.joshgm3z.chatappserver;
+package com.joshgm3z.chatappserver.common.data;
 
 public class ChatDTO {
 

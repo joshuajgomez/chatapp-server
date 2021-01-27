@@ -1,15 +1,16 @@
 package com.joshgm3z.chatappserver;
 
 import com.joshgm3z.chatappserver.common.utils.JsonConverter;
+import com.joshgm3z.chatappserver.common.data.ChatDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServerManager {
+public class AppService {
 
     private List<ChatDTO> mChatList;
 
-    public ServerManager(){
+    public AppService(){
         mChatList = new ArrayList<>();
     }
 
