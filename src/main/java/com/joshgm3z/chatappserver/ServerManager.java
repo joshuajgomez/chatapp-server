@@ -1,22 +1,25 @@
 package com.joshgm3z.chatappserver;
 
+import com.joshgm3z.chatappserver.common.utils.JsonConverter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServerManager {
 
-    private List<String> mMessageList;
+    private List<ChatDTO> mChatList;
 
     public ServerManager(){
-        mMessageList = new ArrayList<>();
+        mChatList = new ArrayList<>();
     }
 
-    public void sendMessage(String message){
-        mMessageList.add(message);
+    public void sendMessage(ChatDTO chatDTO){
+        mChatList.add(chatDTO);
+        System.out.println("Chat added: " + chatDTO);
     }
 
-    public List<String> getMessageList(){
-        return mMessageList;
+    public String getChatList(){
+        return new JsonConverter().convertToJsonArray(mChatList).toString();
     }
 
 }

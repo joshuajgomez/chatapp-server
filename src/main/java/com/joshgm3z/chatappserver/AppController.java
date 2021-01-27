@@ -1,32 +1,30 @@
 package com.joshgm3z.chatappserver;
 
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/chat")
 public class AppController {
 
-    @RequestMapping(method = RequestMethod.POST, path ="/send")
-    public ResponseEntity<Void> sendMessage(@RequestBody ChatDTO chatDTO){
+    ServerManager mServerManager;
 
-        System.out.println("/send chatDTO = [" + chatDTO + "]");
-        return new ResponseEntity<Void>(HttpStatus.OK);
+    public AppController(){
+        mServerManager = new ServerManager();
     }
 
-    @RequestMapping("/testJoshOk")
-    public ResponseEntity<Void> testMessage(){
-
-        System.out.println("/testJosh testMessage");
-        return new ResponseEntity<Void>(HttpStatus.OK);
+    @PostMapping(path ="/send", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public String sendMessage(@RequestBody ChatDTO chatDTO){
+        mServerManager.sendMessage(chatDTO);
+        return "Added chat > " + chatDTO;
     }
 
-    @RequestMapping("/testJoshNok")
-    public ResponseEntity<Void> testMessageNotFound(){
-
-        System.out.println("/testJosh testMessage");
-        return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+    @PostMapping(path ="/list_all")
+    public String getChatList(){
+        String chatList = mServerManager.getChatList();
+        return chatList;
     }
+
 }
