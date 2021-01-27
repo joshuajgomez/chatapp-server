@@ -8,7 +8,7 @@ import java.util.List;
 
 public class JsonConverter {
 
-    public JSONArray convertToJsonArray(List<ChatDTO> chatDTOList){
+    public static JSONArray convertToJsonArray(List<ChatDTO> chatDTOList){
         JSONArray jsonArray = new JSONArray();
         for (ChatDTO chatDTO : chatDTOList) {
             JSONObject jsonObject = new JSONObject();
@@ -19,6 +19,14 @@ public class JsonConverter {
             jsonArray.put(jsonObject);
         }
         return jsonArray;
+    }
+
+    public static JSONObject convertToJsonObject(int id){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("status", 200);
+        jsonObject.put("message", "Chat added");
+        jsonObject.put("id", id);
+        return jsonObject;
     }
 
 }

@@ -14,9 +14,10 @@ public class AppService {
         mChatList = new ArrayList<>();
     }
 
-    public void sendMessage(ChatDTO chatDTO){
+    public int sendMessage(ChatDTO chatDTO){
         mChatList.add(chatDTO);
         System.out.println("Chat added: " + chatDTO);
+        return mChatList.size() - 1;
     }
 
     public String getChatList(){
