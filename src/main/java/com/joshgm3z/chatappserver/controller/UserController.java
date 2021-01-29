@@ -3,7 +3,6 @@ package com.joshgm3z.chatappserver.controller;
 import com.joshgm3z.chatappserver.common.data.UserDTO;
 import com.joshgm3z.chatappserver.common.utils.JsonConverter;
 import com.joshgm3z.chatappserver.service.UserService;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,10 +19,9 @@ public class UserController {
     }
 
     @PostMapping(path ="/add")
-    public String addUser(@RequestBody UserDTO userDTO){
-//        boolean status = mUserService.addUser(userDTO);
-//        return JsonConverter.createUserAddedResponse(userDTO.getUsername(), status);
-        return "User added: " + userDTO;
+    public ResponseEntity addUser(@RequestBody UserDTO userDTO){
+        boolean status = mUserService.addUser(userDTO);
+        return JsonConverter.createUserAddedResponse(userDTO, status);
     }
 
     @PostMapping(path ="/list_users")
