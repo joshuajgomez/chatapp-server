@@ -20,13 +20,22 @@ public class UserController {
 
     @PostMapping(path ="/add")
     public ResponseEntity addUser(@RequestBody UserDTO userDTO){
-        boolean status = mUserService.addUser(userDTO);
-        return JsonConverter.createUserAddedResponse(userDTO, status);
+        int id = mUserService.addUser(userDTO);
+        System.out.println("addUser id=" + id);
+        return JsonConverter.createUserAddedResponse(userDTO, id);
+    }
+
+    @PostMapping(path ="/checkUser")
+    public ResponseEntity checkUser(@RequestBody UserDTO userDTO){
+        boolean isUserFound = mUserService.checkUser(userDTO);
+        System.out.println("checkUser " + userDTO + " isUserFound=" + isUserFound);
+        return JsonConverter.createCheckUserResponse(isUserFound);
     }
 
     @PostMapping(path ="/list_users")
     public ResponseEntity getUsers(){
         List<UserDTO> userList = mUserService.getUserList();
+        System.out.println("getUsers userList=" + userList);
         return JsonConverter.createUserListResponse(userList);
     }
 

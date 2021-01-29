@@ -13,12 +13,13 @@ public class UserService {
         mUserList = new ArrayList<>();
     }
 
-    public boolean addUser(UserDTO userDTO){
+    public int addUser(UserDTO userDTO){
         System.out.println("User added: " + userDTO);
-        return mUserList.add(userDTO);
+        mUserList.add(userDTO);
+        return mUserList.size() - 1;
     }
 
-    public String checkUser(UserDTO userDTO){
+    public boolean checkUser(UserDTO userDTO){
         boolean isUserFound = false;
         for (UserDTO user : mUserList) {
             if (user.getUsername().equals(userDTO.getUsername())) {
@@ -26,7 +27,7 @@ public class UserService {
                 break;
             }
         }
-        return isUserFound ? "true" : "false";
+        return isUserFound;
     }
 
     public List<UserDTO> getUserList() {
