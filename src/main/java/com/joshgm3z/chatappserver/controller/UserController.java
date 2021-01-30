@@ -3,6 +3,7 @@ package com.joshgm3z.chatappserver.controller;
 import com.joshgm3z.chatappserver.common.data.UserDTO;
 import com.joshgm3z.chatappserver.common.utils.JsonConverter;
 import com.joshgm3z.chatappserver.service.UserService;
+import org.apache.catalina.Lifecycle;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,16 +21,16 @@ public class UserController {
 
     @PostMapping(path ="/add")
     public ResponseEntity addUser(@RequestBody UserDTO userDTO){
-        int id = mUserService.addUser(userDTO);
-        System.out.println("addUser id=" + id);
-        return JsonConverter.createUserAddedResponse(userDTO, id);
+        mUserService.addUser(userDTO);
+        System.out.println("addUser username=" + userDTO.getUsername());
+        return JsonConverter.createUserAddedResponse(userDTO, userDTO.getUsername());
     }
 
     @PostMapping(path ="/checkUser")
     public ResponseEntity checkUser(@RequestBody UserDTO userDTO){
         boolean isUserFound = mUserService.checkUser(userDTO);
         System.out.println("checkUser " + userDTO + " isUserFound=" + isUserFound);
-        return JsonConverter.createCheckUserResponse(isUserFound);
+        return JsonConverter.createCheckUserResponse(isUserFound, userDTO.getUsername());
     }
 
     @PostMapping(path ="/list_users")

@@ -32,11 +32,11 @@ public class JsonConverter {
         return new ResponseEntity(jsonObject.toString(), HttpStatus.OK);
     }
 
-    public static ResponseEntity createUserAddedResponse(UserDTO userDTO, int id){
+    public static ResponseEntity createUserAddedResponse(UserDTO userDTO, String username){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("status", 200);
-        jsonObject.put("message", "User added: " + id);
-        jsonObject.put("id", id);
+        jsonObject.put("message", "User added: " + username);
+        jsonObject.put("username", username);
         return new ResponseEntity(jsonObject.toString(), HttpStatus.OK);
     }
 
@@ -51,10 +51,11 @@ public class JsonConverter {
         return new ResponseEntity(jsonArray.toString(), HttpStatus.OK);
     }
 
-    public static ResponseEntity createCheckUserResponse(boolean isUserFound) {
+    public static ResponseEntity createCheckUserResponse(boolean isUserFound, String username) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("status", 200);
         jsonObject.put("message", isUserFound ? "User found" : "User not found");
+        jsonObject.put("username", username);
         jsonObject.put("isUserFound", isUserFound);
         return new ResponseEntity(jsonObject.toString(), HttpStatus.OK);
     }
