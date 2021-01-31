@@ -19,16 +19,24 @@ public class ChatController {
         mChatService = new ChatService();
     }
 
-    @PostMapping(path ="/add")
-    public String addUser(@RequestBody UserDTO userDTO){
-//        boolean status = mUserService.addUser(userDTO);
-//        return JsonConverter.createUserAddedResponse(userDTO.getUsername(), status);
-        return "User added: " + userDTO;
-    }
     @PostMapping(path ="/send")
     public ResponseEntity sendMessage(@RequestBody ChatDTO chatDTO){
         int id = mChatService.sendMessage(chatDTO);
         return JsonConverter.createChatAddedResponse(id);
+    }
+
+    @GetMapping(path ="/list_all_chats_for_user")
+    public ResponseEntity getAllChatsForUser(@RequestParam String username){
+        System.out.println("getAllChatsForUser username=" + username);
+        List<ChatDTO> chatList = mChatService.getChatListForUser(username);
+        return JsonConverter.createChatListResponse(chatList);
+    }
+
+    @GetMapping(path ="/list_chats_between_users")
+    public ResponseEntity getChatsBetweenUsers(@RequestParam String username1, @RequestParam String username2){
+        System.out.println("getChatsBetweenUsers username1=" + username1 + ", username2=" + username2);
+        List<ChatDTO> chatList = mChatService.getChatsBetweenUsers(username1, username2);
+        return JsonConverter.createChatListResponse(chatList);
     }
 
     @PostMapping(path ="/list_all")

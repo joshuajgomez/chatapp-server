@@ -33,4 +33,14 @@ public class UserService {
     public List<UserDTO> getUserList() {
         return mUserList;
     }
+
+    public List<UserDTO> getUserListExcluding(String username) {
+        List<UserDTO> excludedList = new ArrayList<>();
+        for (UserDTO userDTO : mUserList) {
+            if (!userDTO.getUsername().equals(username)) {
+                excludedList.add(userDTO);
+            }
+        }
+        return excludedList;
+    }
 }
