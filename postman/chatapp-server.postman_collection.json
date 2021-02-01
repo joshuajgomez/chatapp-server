@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "c1e40bbf-805e-49f7-893b-768574eae99a",
+		"name": "chatapp-server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Add user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Joshua\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/list_users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"list_users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all users excluding",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/list_users_excluded?username=albin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"list_users_excluded"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "albin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"Heyyy\",\r\n    \"time\": \"126287642732\", \r\n    \"fromUser\":\"joshua\", \r\n    \"toUser\": \"sachin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"test"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Heyy",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chat",
+			"item": [
+				{
+					"name": "send",
+					"item": [
+						{
+							"name": "send - josh > sachin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"message\": \"Heyyy\",\r\n    \"time\": \"126287642732\", \r\n    \"fromUser\":\"joshua\", \r\n    \"toUser\": \"sachin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/chat/send",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"chat",
+										"send"
+									],
+									"query": [
+										{
+											"key": "message",
+											"value": "Heyy",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Send message"
+							},
+							"response": []
+						},
+						{
+							"name": "send - josh > albin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"message\": \"Heyyy\",\r\n    \"time\": \"126287642732\", \r\n    \"fromUser\":\"joshua\", \r\n    \"toUser\": \"albin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/chat/send",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"chat",
+										"send"
+									],
+									"query": [
+										{
+											"key": "message",
+											"value": "Heyy",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Send message"
+							},
+							"response": []
+						},
+						{
+							"name": "send - albin > josh",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"message\": \"Heyyye\",\r\n    \"time\": \"126287642732\", \r\n    \"fromUser\":\"albin\", \r\n    \"toUser\": \"josh\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/chat/send",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"chat",
+										"send"
+									],
+									"query": [
+										{
+											"key": "message",
+											"value": "Heyy",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Send message"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List all chats",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/chat/list_all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"list_all"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Heyy",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all chats for user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/chat/list_all_chats_for_user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"list_all_chats_for_user"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "josh",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all chats for between users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/chat/list_chats_between_users?username1=josh&username2=albin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"list_chats_between_users"
+							],
+							"query": [
+								{
+									"key": "username1",
+									"value": "josh"
+								},
+								{
+									"key": "username2",
+									"value": "albin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"Heyyy\",\r\n    \"time\": \"126287642732\", \r\n    \"fromUser\":\"joshua\", \r\n    \"toUser\": \"sachin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/chat/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"test"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "Heyy",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

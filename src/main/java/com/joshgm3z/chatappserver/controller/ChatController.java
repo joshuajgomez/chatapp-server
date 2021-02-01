@@ -1,7 +1,6 @@
 package com.joshgm3z.chatappserver.controller;
 
 import com.joshgm3z.chatappserver.common.data.ChatDTO;
-import com.joshgm3z.chatappserver.common.data.UserDTO;
 import com.joshgm3z.chatappserver.service.ChatService;
 import com.joshgm3z.chatappserver.common.utils.JsonConverter;
 import org.springframework.http.*;
@@ -39,7 +38,7 @@ public class ChatController {
         return JsonConverter.createChatListResponse(chatList);
     }
 
-    @PostMapping(path ="/list_all")
+    @GetMapping(path ="/list_all")
     public ResponseEntity getChatList(){
         List<ChatDTO> chatList = mChatService.getChatList();
         return JsonConverter.createChatListResponse(chatList);

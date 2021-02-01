@@ -33,14 +33,14 @@ public class UserController {
         return JsonConverter.createCheckUserResponse(isUserFound, userDTO.getUsername());
     }
 
-    @PostMapping(path ="/list_users_excluded")
-    public ResponseEntity getUsersExcluded(UserDTO userDTO){
-        List<UserDTO> userList = mUserService.getUserListExcluding(userDTO.getUsername());
+    @GetMapping(path ="/list_users_excluded")
+    public ResponseEntity getUsersExcluded(@RequestParam String username){
+        List<UserDTO> userList = mUserService.getUserListExcluding(username);
         System.out.println("getUsersExcluded userList=" + userList);
         return JsonConverter.createUserListResponse(userList);
     }
 
-    @PostMapping(path ="/list_users")
+    @GetMapping(path ="/list_users")
     public ResponseEntity getUsers(){
         List<UserDTO> userList = mUserService.getUserList();
         System.out.println("getUsers userList=" + userList);
